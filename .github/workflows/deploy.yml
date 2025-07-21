@@ -3,7 +3,11 @@ name: CI/CD
 on:
   push:
     branches:
-      - main # Desencadena el workflow en cada push a la rama 'main' (cambia si tu rama principal es 'master' u otra)
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
