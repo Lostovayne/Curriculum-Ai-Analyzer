@@ -1,6 +1,20 @@
 name-template: "v$RESOLVED_VERSION 🌟"
 tag-template: "v$RESOLVED_VERSION"
 
+# Disable autolabeler to avoid pull_request_target warnings
+autolabeler:
+  - label: "feature"
+    title:
+      - "/feature/i"
+      - "/feat/i"
+  - label: "bug"
+    title:
+      - "/fix/i"
+      - "/bug/i"
+  - label: "chore"
+    title:
+      - "/chore/i"
+
 categories:
   - title: "🚀 Features"
     labels:
