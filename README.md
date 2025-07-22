@@ -4,6 +4,8 @@ A modern, production-ready template for building full-stack React applications u
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
+[![CI/CD](https://github.com/Lostovayne/Curriculum-Ai-Analyzer/actions/workflows/deploy.yml/badge.svg)](https://github.com/Lostovayne/Curriculum-Ai-Analyzer/actions/workflows/deploy.yml)
+
 ## Features
 
 - 🚀 Server-side rendering
