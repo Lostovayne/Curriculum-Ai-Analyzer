@@ -50,7 +50,7 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       # - name: Desplegar en DigitalOcean App Platform
-      #   uses: digitalocean/app_action@v2
+      #   uses: digitalocean/app_action/deploy@v2
       #   with:
       #     token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       #     app_name: RESUMIND
