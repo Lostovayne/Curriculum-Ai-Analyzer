@@ -5,8 +5,8 @@ on:
     branches:
       - main
       - master
-  pull_request:
-    types: [opened, reopened, synchronize, closed]
+  # pull_request:
+  #   types: [opened, reopened, synchronize, closed]
 
 permissions:
   contents: read
