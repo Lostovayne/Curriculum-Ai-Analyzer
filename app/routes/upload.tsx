@@ -11,7 +11,16 @@ const upload = () => {
     setFile(file);
   };
 
-  const handlerSubmit = (e: FormEvent<HTMLFormElement>) => {};
+  const handlerSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget.closest("form");
+    if (!form) return;
+    const formData = new FormData(form);
+
+    const companyName = formData.get("company-name");
+    const jobTitle = formData.get("job-title");
+    const jobDescription = formData.get("job-description");
+  };
 
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover md:mx-2.5 md:mt-2.5">
