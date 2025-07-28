@@ -30,6 +30,12 @@ const upload = () => {
   const handleAnalize = async ({ companyName, jobTitle, jobDescription, file }: AnalizeProps) => {
     setIsProcessing(true);
     setStatusText("Uploading the file...");
+
+    if (!file) return setStatusText("Please select a file to upload.");
+    if (file.type !== "application/pdf") {
+      return setStatusText("Only PDF files are allowed.");
+    }
+
     const uploadedFile = await fs.upload([file as File]);
 
     if (!uploadedFile) return setStatusText("File upload failed. Please try again.");
@@ -74,10 +80,18 @@ const upload = () => {
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
     setStatusText("Analysis complete. Redirecting...");
     console.log("Resume data:", data);
+    navigate(`/resume/${uuid}`, { replace: true });
+    setIsProcessing(false);
   };
 
   const handlerSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (!file) {
+      setStatusText("Please select a file to upload.");
+      return;
+    }
+
     const form = e.currentTarget.closest("form");
     if (!form) return;
     const formData = new FormData(form);
