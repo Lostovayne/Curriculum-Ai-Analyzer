@@ -441,3 +441,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ---
 
 **Resumind** - Mejora tus oportunidades laborales con análisis inteligente de currículums ✨
+
+**Features**
+[] Agregar Sonner para las notificaciones
