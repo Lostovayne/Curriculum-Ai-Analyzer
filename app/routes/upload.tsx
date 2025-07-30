@@ -66,7 +66,6 @@ const upload = () => {
       prepareInstructions({
         jobTitle,
         jobDescription,
-        AIResponseFormat: "text",
       })
     );
     if (!feedback) return setStatusText("Failed to analyze resume. Please try again.");

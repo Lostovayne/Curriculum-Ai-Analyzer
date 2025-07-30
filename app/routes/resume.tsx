@@ -55,16 +55,21 @@ const resume = () => {
       const imageUrl = URL.createObjectURL(new Blob([imageBlob], { type: "image/png" }));
       setImageUrl(imageUrl);
 
-      setFeedback(data.feedback || "");
-      console.log({ resumeUrl, imageUrl, feedback });
-    };
+      // Parse feedback if it's a string
+      let parsedFeedback = null;
+      if (data.feedback) {
+        try {
+          parsedFeedback =
+            typeof data.feedback === "string" ? JSON.parse(data.feedback) : data.feedback;
+        } catch (error) {
+          console.error("Error parsing feedback:", error);
+          parsedFeedback = null;
+        }
+      }
 
-    if (id) {
-      loadResume();
-    } else {
-      console.error("No resume ID provided");
-      navigate("/");
-    }
+      setFeedback(parsedFeedback);
+    };
+    loadResume();
   }, [id]);
 
   return (
@@ -95,7 +100,7 @@ const resume = () => {
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
               <Summary feedback={feedback} />
-              <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
+              <ATS score={feedback.ATS?.score || 0} suggestions={feedback.ATS?.tips || []} />
               <Details feedback={feedback} />
             </div>
           ) : (
